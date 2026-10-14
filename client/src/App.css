@@ -1,23 +1,48 @@
 .container {
-  max-width: 400px;
-  margin: 50px auto;
-  font-family: Arial, sans-serif;
+    max-width: 500px;
+    margin: 50px auto;
+    font-family: Arial, sans-serif;
 }
 
-input {
-  display: block;
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-}
-
-button {
-  padding: 8px 16px;
-  margin-right: 5px;
-  margin-bottom: 15px;
-}
 label {
     display: block;
     margin-bottom: 4px;
     font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 80px;
+}
+
+button {
+    padding: 8px 16px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+}
+
+.project-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+.remove-button {
+    margin-left: 10px;
+    margin-bottom: 0;
+    padding: 4px 10px;
 }
