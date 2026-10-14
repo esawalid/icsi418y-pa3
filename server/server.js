@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
     res.json({ message: "Server is running" });
 });
 
-// ---------- PA2: signup and login ----------
+// signup and login from PA2
 
 app.post("/signup", async (req, res) => {
     const f_name = req.body.f_name;
@@ -102,7 +102,7 @@ app.post("/login", async (req, res) => {
     }
 });
 
-// ---------- PA3: users ----------
+// get all users
 
 app.get("/api/users", async (req, res) => {
     try {
@@ -121,7 +121,7 @@ app.get("/api/users", async (req, res) => {
     }
 });
 
-// ---------- PA3: projects ----------
+// projects
 
 app.post("/api/projects", async (req, res) => {
     const name = req.body.name;
@@ -132,14 +132,6 @@ app.post("/api/projects", async (req, res) => {
     if (!name || !description || !status || !projectLeadId) {
         return res.status(400).json({
             message: "Required information is missing"
-        });
-    }
-
-    const validStatuses = ["Planning", "Active", "Completed"];
-
-    if (!validStatuses.includes(status)) {
-        return res.status(400).json({
-            message: "Status must be Planning, Active, or Completed"
         });
     }
 
@@ -201,7 +193,7 @@ app.get("/api/projects", async (req, res) => {
     }
 });
 
-// ---------- PA3: project memberships ----------
+// project members
 
 app.get("/api/projects/:projectId/members", async (req, res) => {
     const projectId = req.params.projectId;
@@ -328,16 +320,10 @@ app.delete("/api/projects/:projectId/members/:userId", async (req, res) => {
             });
         }
 
-        const result = await membershipsCollection.deleteOne({
+        await membershipsCollection.deleteOne({
             project_id: new ObjectId(projectId),
             user_id: new ObjectId(userId)
         });
-
-        if (result.deletedCount === 0) {
-            return res.status(404).json({
-                message: "User is not a member of this project"
-            });
-        }
 
         res.status(200).json({
             message: "Member removed successfully"
