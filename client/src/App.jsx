@@ -4,6 +4,7 @@ import Signup from "./components/Signup";
 import CreateProject from "./components/CreateProject";
 import ProjectList from "./components/ProjectList";
 import ProjectMembers from "./components/ProjectMembers";
+import ProjectBacklog from "./components/ProjectBacklog";
 import "./App.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                 <button onClick={() => setPage("createProject")}>Create Project</button>
                 <button onClick={() => setPage("projects")}>View Projects</button>
                 <button onClick={() => setPage("members")}>Manage Members</button>
+                <button onClick={() => setPage("backlog")}>Backlog</button>
             </nav>
 
             {page === "login" && <Login />}
@@ -26,6 +28,7 @@ function App() {
             {page === "createProject" && <CreateProject />}
             {page === "projects" && <ProjectList />}
             {page === "members" && <ProjectMembers />}
+            {page === "backlog" && <ProjectBacklog />}
         </div>
     );
 }
